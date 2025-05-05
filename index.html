@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>KiNG DiMu’s Music Portal</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000, #1f1f1f);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .datetime {
+      font-size: 1.5em;
+      color: #00ffe1;
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 3px solid #00ffc8;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .audio-player, .video-player {
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .footer {
+      font-size: 2em;
+      margin-top: 30px;
+      font-weight: bold;
+      color: #ff00ff;
+      text-shadow: 0 0 8px #ff00ff;
+    }
+
+    .download-section {
+      margin-top: 20px;
+    }
+
+    select, button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #00ff99;
+      color: #000;
+    }
+
+    .decor {
+      margin-top: 40px;
+      color: #ffcc00;
+      font-size: 1.2em;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const options = {
+        weekday: 'long', year: 'numeric', month: 'long',
+        day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+      };
+      document.getElementById('datetime').textContent = now.toLocaleString('si-LK', options);
+    }
+
+    function downloadSelected() {
+      const choice = document.getElementById("format").value;
+      if (choice === "mp3") {
+        window.location.href = "ALAN SOFY - IWASIMA.mp3";
+      } else if (choice === "mp4") {
+        window.location.href = "ALAN SOFY - IWASIMA.mp4";
+      }
+    }
+
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
+  </script>
+</head>
+<body>
+  <div class="datetime" id="datetime"></div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/q-Mkt_dKjCw?si=EkXlUJqQ1URHsA6O"
+            frameborder="0"
+            allowfullscreen></iframe>
+  </div>
+
+  <div class="audio-player">
+    <h3>🎵 Audio Player (MP3)</h3>
+    <audio controls>
+      <source src="ALAN SOFY - IWASIMA.mp3" type="audio/mpeg">
+      ඔබේ බ්‍රව්සරය Audio player එකට support කරන්නෙ නැහැ.
+    </audio>
+  </div>
+
+  <div class="video-player">
+    <h3>🎬 Full Video (MP4)</h3>
+    <video width="100%" controls>
+      <source src="ALAN SOFY - IWASIMA.mp4" type="video/mp4">
+      ඔබේ බ්‍රව්සරය Video player එකට support කරන්නෙ නැහැ.
+    </video>
+  </div>
+
+  <div class="download-section">
+    <h3>⬇️ Download Your Copy</h3>
+    <select id="format">
+      <option value="mp3">Download MP3 (Audio)</option>
+      <option value="mp4">Download MP4 (Video)</option>
+    </select>
+    <br>
+    <button onclick="downloadSelected()">Download</button>
+  </div>
+
+  <div class="footer">King DiMu</div>
+  <div class="decor">🔥 ඒ vibe එක අපිට අමතක කරන්න බෑ! 🔊💥</div>
+</body>
+</html>
